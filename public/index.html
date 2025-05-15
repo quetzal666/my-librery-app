@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Mi Biblioteca Virtual</h1>
+    </header>
+    <main>
+        <form id="book-form">
+            <input type="text" id="book-title" placeholder="Título del libro" required>
+            <input type="text" id="book-author" placeholder="Autor" required>
+            <button type="submit">Agregar Libro</button>
+        </form>
+
+        <section id="book-list">
+            <h2>Libros Guardados</h2>
+            <ul id="books"></ul>
+        </section>
+    
+        <p>Accede a algunas reseñas de libros:</p>
+        <a href="https://drive.google.com/drive/folders/1V1LR51Ndgtbc9VSahueE3p0fAhoGDKx4?usp=sharing" target="_blank">Reseñas</a>
+          <p>Si no sabes qué leer accede a nuestras recomendaciones</p>
+        <a href="https://drive.google.com/drive/folders/12SoatM0ATDCDi3cSIbya9PELnjxZip-Z?usp=sharing" target="_blank">Recomendaciones</a>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
