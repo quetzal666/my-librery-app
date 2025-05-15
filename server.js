@@ -1,20 +1,26 @@
 import express from "express";
 import dotenv from "dotenv";
 import pg from "pg";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Manejo de rutas en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Conexión a PostgreSQL
 const db = new pg.Client({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
 });
-db.connect();
+await db.connect();
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/add-book", async (req, res) => {
     const { title, author } = req.body;
@@ -23,7 +29,7 @@ app.post("/add-book", async (req, res) => {
 });
 
 app.get("/books", async (_, res) => {
-    const result = await db.query("SELECT * FROM books");
+    const result = await db.query("SELECT * FROM books ORDER BY id ASC");
     res.json(result.rows);
 });
 
